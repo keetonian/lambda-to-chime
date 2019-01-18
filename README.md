@@ -26,8 +26,8 @@ To get a webhook URL for this application:
 
 ## App Outputs
 
-1. `LogsToChimeName` - Lambda function name.
-1. `LogsToChimeArn` - Lambda function ARN.
+1. `LambdaToChimeName` - Lambda function name.
+1. `LambdaToChimeArn` - Lambda function ARN.
 
 ## License Summary
 
