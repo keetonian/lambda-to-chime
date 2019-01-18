@@ -24,6 +24,10 @@ To get a webhook URL for this application:
 1. `ChimeUrl` (required) - Webhook URL for integration with Chime
 1. `LogLevel` (optional) - Log level for Lambda function logging, e.g., ERROR, INFO, DEBUG, etc. Default: INFO
 
+## Using this Application
+
+This lambda function expects to be called with a JSON array of strings, and will post each string to a Chime chat room via a webhook.
+
 ## App Outputs
 
 1. `LambdaToChimeName` - Lambda function name.
