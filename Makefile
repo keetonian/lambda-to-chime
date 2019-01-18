@@ -17,7 +17,7 @@ PACKAGE_BUCKET ?= your-bucket-here
 PIP ?= pip
 # Default AWS CLI region
 AWS_DEFAULT_REGION ?= us-east-1
-STACK_NAME ?= aws-lambda-to-chime
+STACK_NAME ?= lambda-to-chime
 CHIME_URL ?= https://aws.amazon.com/chime
 
 PYTHON := $(shell /usr/bin/which python$(PY_VERSION))
@@ -56,11 +56,11 @@ package: compile
 	pipenv run sam package --s3-bucket $(PACKAGE_BUCKET) --output-template-file $(SAM_DIR)/packaged-template.yml
 
 deploy: package
-	pipenv run sam deploy --template-file $(SAM_DIR)/packaged-template.yml --stack-name $(STACK_NAME) --capabilities CAPABILITY_IAM --parameter-overrides ChimeUrl=${CHIME_URL} LogGroupName=${LOG_GROUP_NAME} FilterPattern=${FILTER_PATTERN}
+	pipenv run sam deploy --template-file $(SAM_DIR)/packaged-template.yml --stack-name $(STACK_NAME) --capabilities CAPABILITY_IAM --parameter-overrides ChimeUrl=${CHIME_URL}
 
 # for when you only want to deploy with different parameters and don't need to package or build again
 redeploy: 
-	pipenv run sam deploy --template-file $(SAM_DIR)/packaged-template.yml --stack-name $(STACK_NAME) --capabilities CAPABILITY_IAM --parameter-overrides ChimeUrl=${CHIME_URL} LogGroupName=${LOG_GROUP_NAME} FilterPattern=${FILTER_PATTERN}
+	pipenv run sam deploy --template-file $(SAM_DIR)/packaged-template.yml --stack-name $(STACK_NAME) --capabilities CAPABILITY_IAM --parameter-overrides ChimeUrl=${CHIME_URL}
 
 # used to delete the cfn stack
 undeploy:
