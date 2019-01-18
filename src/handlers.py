@@ -16,7 +16,6 @@ def post_to_chime(event, context):
     LOG.info('Received event: %s', event)
 
     if not isinstance(event, list):
-        # error
         raise InputError(event, "Input needs to be a json array")
 
     for message in event:
